@@ -45,12 +45,14 @@ func (s *Service) CreateContact(w http.ResponseWriter, r *http.Request) {
 
 	var req createContactRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, `{"error":"invalid JSON payload"}`, http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadRequest)
+		_ = json.NewEncoder(w).Encode(map[string]string{"error": "invalid JSON payload"})
 		return
 	}
 
 	if req.Name == "" || req.Email == "" {
-		http.Error(w, `{"error":"name and email are required"}`, http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadRequest)
+		_ = json.NewEncoder(w).Encode(map[string]string{"error": "name and email are required"})
 		return
 	}
 
