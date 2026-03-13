@@ -35,9 +35,11 @@ func (s *Service) ListContacts(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	s.mu.Lock()
-	defer s.mu.Unlock()
+	contacts := make([]Contact, len(s.contacts))
+	copy(contacts, s.contacts)
+	s.mu.Unlock()
 
-	_ = json.NewEncoder(w).Encode(s.contacts)
+	_ = json.NewEncoder(w).Encode(contacts)
 }
 
 func (s *Service) CreateContact(w http.ResponseWriter, r *http.Request) {
