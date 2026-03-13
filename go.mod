@@ -1,3 +1,3 @@
-module github.com/skill-wanderer/contact-BE
+module github.com/skill-wanderer/contact-be
 
 go 1.22
