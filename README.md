@@ -1,4 +1,4 @@
-# contact-BE
+# contact-be
 
 Go bootstrap for a Contact microservice.
 

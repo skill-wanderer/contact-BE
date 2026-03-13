@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/skill-wanderer/contact-BE/internal/contact"
+	"github.com/skill-wanderer/contact-be/internal/contact"
 )
 
 func main() {
